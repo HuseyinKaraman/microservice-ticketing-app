@@ -3,6 +3,7 @@ import { body, validationResult } from 'express-validator';
 import { RequestValidationError } from '../errors/request-validation-error';
 import { User } from '../models/user.model';
 import BadRequestError from '../errors/bad-request-error';
+import { AuthService } from '../services/auth';
 
 const router = express.Router();
 
@@ -31,6 +32,15 @@ router.post('/signup', [
 
         const user = User.build({ email, password });
         await user.save();
+
+        const userJwt = AuthService.generateToken({
+            id: user.id,
+            email: user.email
+        });
+
+        req.session = {
+            jwt: userJwt
+        }
 
         res.status(201).send(user);
     })
