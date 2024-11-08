@@ -2,13 +2,13 @@ import jwt from "jsonwebtoken";
 
 export class AuthService {
     static generateToken(payload: any) {
-        return jwt.sign(payload, process.env.JWT_SECRET as string, {
-            expiresIn: process.env.JWT_EXPIRES_IN,
+        return jwt.sign(payload, process.env.JWT_KEY!, {
+            expiresIn: "1d",
         });
     }
 
     static verifyToken(token: string) {
-        return jwt.verify(token, process.env.JWT_SECRET as string);
+        return jwt.verify(token, process.env.JWT_KEY!);
     }
 
     static decodeToken(token: string) {
