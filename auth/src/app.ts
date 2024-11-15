@@ -13,7 +13,7 @@ app.use(json());
 app.use(
   cookieSeesion({
     signed: false,
-    secure: true
+    secure: process.env.NODE_ENV !== "test",
   })
 )
 
