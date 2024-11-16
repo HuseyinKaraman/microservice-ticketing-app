@@ -14,4 +14,12 @@ build:
       sync:
         manual:
           - src: "src/**/*.ts"
-            dest:   .
+            dest: .
+    - image: hazansuyu/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.js"
+            dest: .

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-depl
+spec:
+  replicas: 1
+  selector: ## this is the selector that will match the pod
+    matchLabels:
+      app: client
+  template: ## this is the pod template, this is where we define the pod configuration
+    metadata:
+      labels:
+        app: client ## this is the pod label, this is the label that will be used to select the pod 
+    spec: ## this is the pod spec , this is where we define the pod configuration
+      containers:
+        - name: client
+          image: hazansuyu/client
+---
+## this is the service, this is the service that will be used to expose the pod
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-srv
+spec:
+  selector:
+    app: client 
+  ports:
+    - name: client
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
