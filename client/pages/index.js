@@ -1,4 +1,3 @@
-import buildClient from "../api/build-client";
 
 const LandingPage = ({ currentUser }) => {
   return (
@@ -7,10 +6,8 @@ const LandingPage = ({ currentUser }) => {
 };
 
 LandingPage.getInitialProps = async (context) => {
-  const client = buildClient(context);
-  const { data } = await client.get("/api/users/currentuser");
-
-  return data;
+  console.log("LANDING PAGE");
+  return {};
 };
 
 export default LandingPage;
