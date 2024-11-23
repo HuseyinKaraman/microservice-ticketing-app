@@ -3,8 +3,7 @@ import {json} from 'body-parser';
 import cookieSeesion from 'cookie-session';
 import 'express-async-errors';
 import { routes } from './routes';
-import { globalErrorHandler } from './middlewares/error-handler';
-import { NotFoundError } from './errors/not-found-error';
+import { globalErrorHandler, NotFoundError } from '@hkmicroservice/common';
 
 const app = express();
 
