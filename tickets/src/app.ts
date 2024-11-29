@@ -2,7 +2,7 @@ import express from 'express';
 import {json} from 'body-parser';
 import cookieSeesion from 'cookie-session';
 import 'express-async-errors';
-import { routes } from './routes';
+import { routes } from './routes/index.routes';
 import { globalErrorHandler, NotFoundError } from '@hkmicroservice/common';
 
 const app = express();
