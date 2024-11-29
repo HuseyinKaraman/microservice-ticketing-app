@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
-  console.log("id", req.params);
   
   const ticket = await Ticket.findById(id);
   if (!ticket) {
