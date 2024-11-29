@@ -1,12 +1,13 @@
-import express from "express";
-import { createTicketRouter } from "./new";
-import { showTicketRouter } from "./show"
-import { currentUser } from "@hkmicroservice/common";
+import { Router, Request, Response } from "express";
+import { Ticket } from "../models/ticket.model";
 
-const router = express.Router();
+const router = Router();
 
-router.use(currentUser);
-router.use(createTicketRouter);
-router.use(showTicketRouter);
+router.get("/", async (req: Request, res: Response) => {
+  const tickets = await Ticket.find({});
 
-export { router as routes };
+  res.send(tickets);
+});
+
+
+export { router as indexTicketRouter };
